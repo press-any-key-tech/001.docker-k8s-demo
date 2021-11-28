@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+data:
+
+  FLASK_APP: app.py
+  FLASK_RUN_HOST: 0.0.0.0
+
+  GREETING_MESSAGE: Default greeting from ConfigMap
+
+  REDIS_SERVER: redis

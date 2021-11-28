@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello01
+  labels:
+    role: hello01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: hello01
+      tier: web
+  template:
+    metadata:
+      labels:
+        role: hello01
+        tier: web
+    spec:
+      containers:
+      - name: hello-app-01
+        image: gcr.io/google-samples/hello-app:1.0
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 8080

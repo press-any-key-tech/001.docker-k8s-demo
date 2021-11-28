@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-service
+spec:
+  selector:
+    role: hello01
+  ports:
+    - port: 81
+      targetPort: 8080

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    deployment: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: web
+  template:
+    metadata:
+      labels:
+        pod: web
+    spec:
+      containers:
+        - name: web
+          image: impalah/basicweb:latest
+          imagePullPolicy: IfNotPresent        
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: web-config
+            - secretRef:
+                name: web-credentials
+
